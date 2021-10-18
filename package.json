@@ -1,0 +1,27 @@
+{
+  "name": "",
+  "version": "",
+  "scripts": {
+    "compile_yaml": "yaml2jsish \"**/*.yaml\" -t ts",
+    "build": "npm run compile_yaml && rimraf dist && tsc",
+    "build:production": "npm run prestart && npm prune --production",
+    "watch": "tsc --w",
+    "prestart": "npm run build && func extensions install",
+    "start:host": "func start",
+    "start": "npm-run-all --parallel start:host watch",
+    "test": "echo \"No tests yet...\""
+  },
+  "description": "",
+  "devDependencies": {
+    "@azure/functions": "^1.0.1-beta1",
+    "@flyweight.cloud/yaml2jsish": "^0.2.0",
+    "@types/node": "^16.11.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "@flyweight.cloud/openroute": "^0.1.0",
+    "twilio": "^3.69.0"
+  }
+}

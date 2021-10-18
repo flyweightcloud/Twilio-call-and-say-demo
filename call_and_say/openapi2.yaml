@@ -1,0 +1,51 @@
+swagger: '2.0'
+info:
+  title: Twilio Connector to Microsoft Flow / Powerapps
+  description: Make calls using Twilio from Flow/Powerapps
+  version: '1.0'
+  contact: {}
+host: $__HOSTNAME__
+basePath: /
+schemes: [https]
+consumes: []
+produces: []
+paths:
+  $__BASE_PATH__:
+    post:
+      summary: Call a phone and say a message
+      operationId: call_and_say
+      parameters:
+        - in: body
+          name: message
+          description: The message to call with
+          schema:
+            type: object
+            required:
+              - to
+              - content
+            properties:
+              to:
+                type: string
+              content:
+                type: string
+      responses:
+        '200':
+          description: Result
+          schema:
+            type: object
+            properties:
+              status: {type: string, description: Result of the call}
+definitions: {}
+parameters: {}
+responses: {}
+securityDefinitions:
+  oauth2_auth:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: https://login.windows.net/common/oauth2/authorize
+    tokenUrl: https://login.windows.net/common/oauth2/authorize
+    scopes: {}
+security:
+- oauth2_auth: []
+tags:
+- {name: twilio, description: 'Twilio connector'}
