@@ -9,6 +9,7 @@
     "prestart": "npm run build && func extensions install",
     "start:host": "func start",
     "start": "npm-run-all --parallel start:host watch",
+    "deploy": "npm i && npm run build:production && func azure functionapp publish $AZ_FN --typescript --force && npm i",
     "test": "echo \"No tests yet...\""
   },
   "description": "",
